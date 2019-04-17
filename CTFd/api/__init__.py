@@ -19,7 +19,6 @@ from CTFd.api.v1.pages import pages_namespace
 from CTFd.api.v1.unlocks import unlocks_namespace
 
 api = Blueprint('api', __name__, url_prefix='/api/v1')
-CORS(api)
 CTFd_API_v1 = Api(api, version='v1')
 
 CTFd_API_v1.add_namespace(challenges_namespace, '/challenges')
