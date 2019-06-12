@@ -1,6 +1,7 @@
 from flask import Blueprint, current_app
 from flask_restplus import Api
 from CTFd.api.v1.challenges import challenges_namespace
+from flask_cors import CORS
 
 from CTFd.api.v1.teams import teams_namespace
 from CTFd.api.v1.users import users_namespace
@@ -19,6 +20,8 @@ from CTFd.api.v1.unlocks import unlocks_namespace
 
 api = Blueprint("api", __name__, url_prefix="/api/v1")
 CTFd_API_v1 = Api(api, version="v1", doc=current_app.config.get("SWAGGER_UI"))
+CORS(CTFd_API_v1)
+
 
 CTFd_API_v1.add_namespace(challenges_namespace, "/challenges")
 CTFd_API_v1.add_namespace(tags_namespace, "/tags")
